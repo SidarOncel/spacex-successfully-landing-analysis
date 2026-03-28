@@ -291,3 +291,15 @@ print(data_falcon9.head)
 # Some of the rows are missing values in our dataset.
 
 print(data_falcon9.isnull().sum())
+
+# Before we can continue we must deal with these missing values. The LandingPad column will retain None values to represent when landing pads were not used.
+# Calculate below the mean for the PayloadMass  using the .mean() .
+#  Then use the mean and the .replace()  function to replace `np.nan` values in the data with the mean you calculated.
+
+# Calculate the mean value of PayloadMass column
+mean_mass = data_falcon9['PayloadMass'].mean()
+# Replace the np.nan values with its mean value
+data_falcon9['PayloadMass'] = data_falcon9['PayloadMass'].replace(np.nan, mean_mass)
+
+# We can now export it to a CSV
+data_falcon9.to_csv('dataset_part_1.csv', index=False)
