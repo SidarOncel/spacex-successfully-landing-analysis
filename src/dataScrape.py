@@ -75,7 +75,6 @@ def fetch_json(static_url):
     headers = {
         "User-Agent": "Mozilla/5.0"
     }
-
     for i in range(3):  # try 3 times
         try:
             response = requests.get(static_url, headers=headers, timeout=30)
@@ -145,8 +144,7 @@ launch_dict['Time']=[]
 extracted_row = 0
 
 # Extract each table
-for table_number, table in enumerate(soup.find_all('table', "wikitable plainrowheaders collapsible")):
-
+for table_number, table in enumerate(soup.find_all('table',"wikitable plainrowheaders collapsible")):
     # Get table rows
     for rows in table.find_all("tr"):
 

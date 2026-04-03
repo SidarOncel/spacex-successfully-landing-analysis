@@ -136,7 +136,8 @@ df = pd.json_normalize(response.json())
 
 
 # You will notice that a lot of the data are IDs. For example the rocket column has no information about the rocket just an identification number.
-# We will now use the API again to get information about the launches using the IDs given for each launch. Specifically we will be using columns rocket, payloads, launchpad, and cores.
+# We will now use the API again to get information about the launches using the IDs given for each launch. 
+# Specifically we will be using columns rocket, payloads, launchpad, and cores.
 
 # Lets take a subset of our dataframe keeping only the features we want and the flight number, and date_utc.
 data = df[['rocket', 'payloads', 'launchpad', 'cores', 'flight_number', 'date_utc']]
