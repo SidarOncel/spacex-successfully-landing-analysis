@@ -302,5 +302,14 @@ mean_mass = data_falcon9['PayloadMass'].mean()
 # Replace the np.nan values with its mean value
 data_falcon9['PayloadMass'] = data_falcon9['PayloadMass'].replace(np.nan, mean_mass)
 
+# Adds Class column based on the outcome
+def outcome_to_class(outcome):
+    if pd.isna(outcome):
+        return 0
+    outcome = str(outcome).strip()
+    return 1 if outcome.startswith("True") else 0
+
+data_falcon9["Class"] = data_falcon9["Outcome"].apply(outcome_to_class)
+
 # We can now export it to a CSV
 data_falcon9.to_csv('dataset_part_1.csv', index=False)
